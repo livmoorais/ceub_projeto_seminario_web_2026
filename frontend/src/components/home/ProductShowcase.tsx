@@ -8,14 +8,14 @@ import type { PecaResumo } from "@/types/catalogo";
 
 export function ProductShowcase({ pecas }: { pecas: PecaResumo[] }) {
   return (
-    <section aria-labelledby="achadinhos-titulo" className="border-y-2 border-vinho bg-chiclete-100/60 py-16 lg:py-24">
+    <section aria-labelledby="achadinhos-titulo" className="border-y-2 border-roxo bg-rosa-100/60 py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading id="achadinhos-titulo" eyebrow="acabou de chegar">
             achadinhos pra
-            <br className="hidden sm:block" /> chamar <span className="text-cereja italic">de seus</span>
+            <br className="hidden sm:block" /> chamar <span className="text-violeta italic">de seus</span>
           </SectionHeading>
-          <Sticker tone="creme" rotate={3} className="self-start sm:self-auto">
+          <Sticker tone="nevoa" rotate={3} className="self-start sm:self-auto">
             só tem uma de cada, viu?
           </Sticker>
         </div>
@@ -29,7 +29,7 @@ export function ProductShowcase({ pecas }: { pecas: PecaResumo[] }) {
             ))}
           </ul>
         ) : (
-          <p className="mt-10 rounded-3xl border-2 border-dashed border-vinho/40 p-10 text-center font-hand text-2xl">
+          <p className="mt-10 rounded-3xl border-2 border-dashed border-roxo/40 p-10 text-center font-hand text-2xl">
             as peças estão chegando… volta daqui a pouquinho ♡
           </p>
         )}
@@ -37,7 +37,7 @@ export function ProductShowcase({ pecas }: { pecas: PecaResumo[] }) {
         <div className="mt-12 flex justify-center">
           <ButtonLink
             href={catalogoUrl({ ordem: "recentes" })}
-            variant="vinho"
+            variant="roxo"
             size="lg"
             iconRight={<IconArrowRight size={20} />}
           >

@@ -20,12 +20,12 @@ export function SearchForm({ className = "" }: { className?: string }) {
         autoComplete="off"
         enterKeyHint="search"
         placeholder="procura um achadinho: vestido, jeans, bolsa…"
-        className="peer h-11 w-full rounded-full border-2 border-vinho bg-white/70 pr-14 pl-5 text-[0.95rem] text-vinho transition-[background-color,box-shadow] placeholder:text-vinho-soft/80 hover:bg-white focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-chiclete)] focus:outline-none"
+        className="peer h-11 w-full rounded-full border-2 border-roxo bg-white/70 pr-14 pl-5 text-[0.95rem] text-roxo transition-[background-color,box-shadow] placeholder:text-roxo-soft/80 hover:bg-white focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-rosa)] focus:outline-none"
       />
       <button
         type="submit"
         aria-label="Buscar"
-        className="absolute top-1/2 right-1.5 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-vinho text-creme transition-colors hover:bg-cereja"
+        className="absolute top-1/2 right-1.5 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-roxo text-nevoa transition-colors hover:bg-violeta"
       >
         <IconSearch size={17} />
       </button>

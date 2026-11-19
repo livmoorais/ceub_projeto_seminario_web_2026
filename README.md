@@ -43,6 +43,15 @@ Abra **http://localhost:3000**.
 
 Nenhum pagamento real é feito.
 
+## Acessibilidade
+
+- **Modo claro e escuro:** botão de sol/lua no cabeçalho. Por padrão o site segue o tema do sistema.
+- **Barra de acessibilidade** (lateral esquerda; no celular, canto inferior): Libras com o VLibras do governo
+  federal, leitor de voz e opções visuais (tema, alto contraste e tamanho da fonte).
+- Todas as combinações de cor passam no **WCAG 2.1 AA** nos três temas (claro, escuro e alto contraste).
+
+Detalhes em [`frontend/README.md`](frontend/README.md#acessibilidade).
+
 ## Abrindo no Antigravity
 
 1. No Antigravity, **File → Open Folder** e escolha a pasta do repositório (ou clone com
@@ -60,7 +69,8 @@ Nenhum pagamento real é feito.
 | Documento | Neste repositório |
 | --- | --- |
 | Next.js (React) com TypeScript, SSR/ISR | ✔ Home com ISR; vitrine e peça renderizadas no servidor a cada acesso |
-| Tailwind CSS | ✔ com a identidade visual do grupo |
+| Tailwind CSS | ✔ com as cores do CEUB (roxo e lilás), em modo claro, escuro e alto contraste |
+| Acessibilidade | ✔ barra de acessibilidade (VLibras, leitor de voz, contraste e fonte); contraste WCAG AA nos 3 temas |
 | Zustand para o carrinho | ✔ `frontend/src/lib/sacola.ts` |
 | Vitest + Testing Library | ✔ `npm test` |
 | ADR-003: reserva de peça única com expiração de 15 min | ✔ reserva ao colocar na sacola; reserva vencida volta para a vitrine |

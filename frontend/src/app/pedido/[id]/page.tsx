@@ -17,16 +17,16 @@ function QrIlustrativo({ codigo }: { codigo: string }) {
   const celulas = Array.from({ length: n * n }, (_, i) => (codigo.charCodeAt(i % codigo.length) * (i + 7)) % 3 === 0);
   const canto = (x: number, y: number) => (x < 7 && y < 7) || (x >= n - 7 && y < 7) || (x < 7 && y >= n - 7);
   return (
-    <svg viewBox={`0 0 ${n} ${n}`} className="size-48 rounded-xl border-2 border-vinho bg-white p-2" role="img" aria-label="QR Code do Pix (ilustrativo)">
+    <svg viewBox={`0 0 ${n} ${n}`} className="size-48 rounded-xl border-2 border-roxo p-2" style={{ background: "#ffffff" }} role="img" aria-label="QR Code do Pix (ilustrativo)">
       {celulas.map((preto, i) => {
         const x = i % n;
         const y = Math.floor(i / n);
         if (canto(x, y)) {
           const borda = x % (n - 7) === 0 || y % (n - 7) === 0 || x % (n - 7) === 6 || y % (n - 7) === 6;
           const miolo = [2, 3, 4].includes(x % (n - 7)) && [2, 3, 4].includes(y % (n - 7));
-          return borda || miolo ? <rect key={i} x={x} y={y} width={1} height={1} fill="#5b0f24" /> : null;
+          return borda || miolo ? <rect key={i} x={x} y={y} width={1} height={1} fill="#4a1259" /> : null;
         }
-        return preto ? <rect key={i} x={x} y={y} width={1} height={1} fill="#5b0f24" /> : null;
+        return preto ? <rect key={i} x={x} y={y} width={1} height={1} fill="#4a1259" /> : null;
       })}
     </svg>
   );
@@ -66,13 +66,13 @@ export default function PedidoPage() {
 
   return (
     <section className="mx-auto max-w-2xl px-4 py-12 text-center sm:px-6 lg:py-16">
-      <Sticker tone={pago ? "chiclete" : "lilas"} rotate={-3}>
+      <Sticker tone={pago ? "rosa" : "lilas"} rotate={-3}>
         pedido #{pedido.id.slice(0, 6)}
       </Sticker>
       <h1 className="mt-6 font-display text-5xl leading-[0.95] font-medium tracking-[-0.04em] text-balance">
         {pago ? (
           <>
-            pagamento <span className="text-cereja italic">confirmado!</span>
+            pagamento <span className="text-violeta italic">confirmado!</span>
           </>
         ) : (
           "pague com Pix pra garantir"
@@ -80,31 +80,31 @@ export default function PedidoPage() {
       </h1>
 
       {pago ? (
-        <p className="mt-5 text-lg text-vinho-soft">
+        <p className="mt-5 text-lg text-roxo-soft">
           obrigado, {pedido.comprador.nome.split(" ")[0]}! as peças agora são suas e quem vendeu já foi avisado pra enviar.
         </p>
       ) : expirado ? (
-        <p className="mt-5 text-lg text-vinho-soft">o prazo do Pix acabou e as peças voltaram pra vitrine.</p>
+        <p className="mt-5 text-lg text-roxo-soft">o prazo do Pix acabou e as peças voltaram pra vitrine.</p>
       ) : (
         <div className="mt-8 flex flex-col items-center gap-5">
           <QrIlustrativo codigo={pedido.pixCopiaECola} />
-          <p className="text-sm text-vinho-soft">
+          <p className="text-sm text-roxo-soft">
             o código expira em <Contagem ate={pedido.pixExpiraEm} onExpirar={carregar} />
           </p>
-          <div className="w-full rounded-2xl border-2 border-vinho bg-white/70 p-3 text-left font-mono text-xs break-all">{pedido.pixCopiaECola}</div>
+          <div className="w-full rounded-2xl border-2 border-roxo bg-white/70 p-3 text-left font-mono text-xs break-all">{pedido.pixCopiaECola}</div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <button type="button" onClick={copiar} className={buttonClasses("creme", "md")}>
+            <button type="button" onClick={copiar} className={buttonClasses("nevoa", "md")}>
               {copiado ? "copiado!" : "copiar código Pix"}
             </button>
             {/* faz o papel do webhook do Mercado Pago (PixSimuladoProvider) */}
-            <button type="button" onClick={simularPagamento} disabled={pagando} className={buttonClasses("cereja", "md")}>
+            <button type="button" onClick={simularPagamento} disabled={pagando} className={buttonClasses("violeta", "md")}>
               {pagando ? "confirmando…" : "simular pagamento (demo)"}
             </button>
           </div>
         </div>
       )}
 
-      <div className="mt-10 rounded-[1.5rem] border-2 border-vinho bg-creme p-5 text-left text-sm">
+      <div className="mt-10 rounded-[1.5rem] border-2 border-roxo bg-nevoa p-5 text-left text-sm">
         <ul className="space-y-1">
           {pedido.itens.map((item) => (
             <li key={item.id} className="flex justify-between gap-3">
@@ -112,21 +112,21 @@ export default function PedidoPage() {
               <span>{formatarPreco(item.precoCentavos)}</span>
             </li>
           ))}
-          <li className="flex justify-between gap-3 text-vinho-soft">
+          <li className="flex justify-between gap-3 text-roxo-soft">
             <span>frete fixo</span>
             <span>{formatarPreco(pedido.freteCentavos)}</span>
           </li>
         </ul>
-        <p className="mt-3 flex justify-between border-t-2 border-vinho/20 pt-3 text-base font-bold">
+        <p className="mt-3 flex justify-between border-t-2 border-roxo/20 pt-3 text-base font-bold">
           <span>total</span>
           <span>{formatarPreco(pedido.totalCentavos)}</span>
         </p>
-        <p className="mt-3 text-vinho-soft">
+        <p className="mt-3 text-roxo-soft">
           entrega: {pedido.endereco.logradouro}, {pedido.endereco.numero} · {pedido.endereco.cidade}/{pedido.endereco.uf}
         </p>
       </div>
 
-      <ButtonLink href={catalogoUrl()} variant="vinho" size="lg" className="mt-10">
+      <ButtonLink href={catalogoUrl()} variant="roxo" size="lg" className="mt-10">
         continuar garimpando
       </ButtonLink>
     </section>

@@ -12,7 +12,7 @@ export function SacolaBadge() {
 
   if (!montado || quantidade === 0) return null;
   return (
-    <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full border-2 border-creme bg-cereja text-[0.65rem] font-bold text-creme">
+    <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full border-2 border-nevoa bg-violeta text-[0.65rem] font-bold text-nevoa">
       {quantidade}
     </span>
   );

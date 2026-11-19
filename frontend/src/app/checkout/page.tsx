@@ -13,7 +13,7 @@ import { subtotalSacola, useSacola } from "@/lib/sacola";
 import type { EnderecoEntrega } from "@/types/pedido";
 
 const campo =
-  "h-12 w-full rounded-2xl border-2 border-vinho bg-white/70 px-4 text-vinho focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-chiclete)] focus:outline-none";
+  "h-12 w-full rounded-2xl border-2 border-roxo bg-white/70 px-4 text-roxo focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-rosa)] focus:outline-none";
 
 const VAZIO = { nome: "", email: "", cep: "", logradouro: "", numero: "", complemento: "", bairro: "", cidade: "", uf: "" };
 
@@ -100,13 +100,13 @@ export default function CheckoutPage() {
         <SectionHeading eyebrow="quase lá">fechar a compra</SectionHeading>
 
         <fieldset className="space-y-3">
-          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-cereja uppercase">1 · seus dados</legend>
+          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-violeta uppercase">1 · seus dados</legend>
           <input required className={campo} placeholder="nome completo" autoComplete="name" value={dados.nome} onChange={mudar("nome")} />
           <input required type="email" className={campo} placeholder="e-mail" autoComplete="email" value={dados.email} onChange={mudar("email")} />
         </fieldset>
 
         <fieldset className="space-y-3">
-          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-cereja uppercase">2 · entrega</legend>
+          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-violeta uppercase">2 · entrega</legend>
           <div className="grid gap-3 sm:grid-cols-[180px_1fr]">
             <input
               required
@@ -133,15 +133,15 @@ export default function CheckoutPage() {
         </fieldset>
 
         <fieldset>
-          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-cereja uppercase">3 · pagamento</legend>
-          <p className="rounded-2xl border-2 border-vinho bg-lilas-100 p-4 text-sm">
+          <legend className="mb-3 text-xs font-bold tracking-[0.18em] text-violeta uppercase">3 · pagamento</legend>
+          <p className="rounded-2xl border-2 border-roxo bg-lilas-100 p-4 text-sm">
             <strong>Pix.</strong> Depois de confirmar, você recebe o QR Code e o código copia-e-cola. Ambiente de
             demonstração: nenhum pagamento real é feito.
           </p>
         </fieldset>
       </div>
 
-      <aside className="h-fit space-y-4 rounded-[1.5rem] border-2 border-vinho bg-chiclete-100 p-6 shadow-[4px_4px_0_0_var(--color-vinho)] lg:mt-24">
+      <aside className="h-fit space-y-4 rounded-[1.5rem] border-2 border-roxo bg-rosa-100 p-6 shadow-[4px_4px_0_0_var(--color-roxo)] lg:mt-24">
         <h2 className="font-display text-2xl font-medium">resumo</h2>
         <ul className="space-y-1 text-sm">
           {itens.map((i) => (
@@ -151,7 +151,7 @@ export default function CheckoutPage() {
             </li>
           ))}
         </ul>
-        <dl className="space-y-1 border-t-2 border-vinho/20 pt-3 text-sm">
+        <dl className="space-y-1 border-t-2 border-roxo/20 pt-3 text-sm">
           <div className="flex justify-between">
             <dt>frete fixo</dt>
             <dd>{formatarPreco(FRETE_FIXO_CENTAVOS)}</dd>
@@ -162,11 +162,11 @@ export default function CheckoutPage() {
           </div>
         </dl>
         {erro ? (
-          <p role="alert" className="rounded-2xl border-2 border-vinho bg-pessego-100 p-3 text-sm">
+          <p role="alert" className="rounded-2xl border-2 border-roxo bg-pervinca-100 p-3 text-sm">
             {erro}
           </p>
         ) : null}
-        <button type="submit" disabled={enviando} className={buttonClasses("cereja", "lg", "w-full")}>
+        <button type="submit" disabled={enviando} className={buttonClasses("violeta", "lg", "w-full")}>
           {enviando ? "gerando Pix…" : "gerar Pix"}
         </button>
       </aside>

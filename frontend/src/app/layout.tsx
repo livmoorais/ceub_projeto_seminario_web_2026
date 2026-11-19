@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Caveat, DM_Sans, Fraunces } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { AplicarPreferencias } from "@/components/acessibilidade/AplicarPreferencias";
+import { BarraAcessibilidade } from "@/components/acessibilidade/BarraAcessibilidade";
+import { SCRIPT_PREFERENCIAS } from "@/lib/preferencias";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -34,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fff5ee",
+  themeColor: "#faf6fd",
 };
 
 export default function RootLayout({
@@ -43,17 +46,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${dmSans.variable} ${caveat.variable}`}>
-      <body className="min-h-dvh antialiased">
+    <html
+      lang="pt-BR"
+      data-tema="claro"
+      // o script abaixo ajusta data-tema antes da hidratação (tema salvo ou do sistema)
+      suppressHydrationWarning
+      className={`${fraunces.variable} ${dmSans.variable} ${caveat.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_PREFERENCIAS }} />
+      </head>
+      {/* espaço reservado para a barra de acessibilidade: embaixo no celular, à esquerda a partir de md */}
+      <body className="min-h-dvh pb-16 antialiased md:pb-0 md:pl-14">
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-vinho focus:px-4 focus:py-2 focus:text-creme"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-roxo focus:px-4 focus:py-2 focus:text-nevoa"
         >
           pular para o conteúdo
         </a>
         <SiteHeader />
         <main id="conteudo">{children}</main>
         <SiteFooter />
+        <BarraAcessibilidade />
+        <AplicarPreferencias />
       </body>
     </html>
   );

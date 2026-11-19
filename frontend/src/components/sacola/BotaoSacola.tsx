@@ -34,7 +34,7 @@ export function BotaoSacola({ peca, status }: { peca: PecaResumo; status: Status
 
   if (montado && naSacola) {
     return (
-      <Link href={ROUTES.carrinho} className={buttonClasses("vinho", "lg", "w-full")}>
+      <Link href={ROUTES.carrinho} className={buttonClasses("roxo", "lg", "w-full")}>
         já está na sua sacola · ver sacola
       </Link>
     );
@@ -42,7 +42,7 @@ export function BotaoSacola({ peca, status }: { peca: PecaResumo; status: Status
 
   if (status !== "disponivel") {
     return (
-      <p className="rounded-full border-2 border-dashed border-vinho/40 py-4 text-center font-semibold text-vinho-soft">
+      <p className="rounded-full border-2 border-dashed border-roxo/40 py-4 text-center font-semibold text-roxo-soft">
         {status === "vendida" ? "essa peça já foi vendida" : "reservada por outra pessoa, volta daqui a pouco"}
       </p>
     );
@@ -51,14 +51,14 @@ export function BotaoSacola({ peca, status }: { peca: PecaResumo; status: Status
   return (
     <div className="space-y-3">
       {aviso ? (
-        <p role="alert" className="rounded-2xl border-2 border-vinho bg-pessego-100 px-4 py-3 text-sm">
+        <p role="alert" className="rounded-2xl border-2 border-roxo bg-pervinca-100 px-4 py-3 text-sm">
           {aviso}
         </p>
       ) : null}
-      <button type="button" onClick={colocarNaSacola} disabled={enviando} className={buttonClasses("cereja", "lg", "w-full")}>
+      <button type="button" onClick={colocarNaSacola} disabled={enviando} className={buttonClasses("violeta", "lg", "w-full")}>
         {enviando ? "reservando…" : "colocar na sacola"}
       </button>
-      <p className="text-center text-sm text-vinho-soft">
+      <p className="text-center text-sm text-roxo-soft">
         a peça fica reservada pra você por {RESERVA_MINUTOS} minutos
       </p>
     </div>

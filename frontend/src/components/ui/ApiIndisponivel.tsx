@@ -4,12 +4,12 @@ import { Sticker } from "@/components/ui/Sticker";
 export function ApiIndisponivel() {
   return (
     <section className="mx-auto max-w-xl px-4 py-24 text-center">
-      <Sticker tone="pessego" rotate={-3}>
+      <Sticker tone="pervinca" rotate={-3}>
         eita!
       </Sticker>
-      <h1 className="mt-6 font-display text-4xl font-medium tracking-tight text-vinho">não conseguimos falar com a API</h1>
-      <p className="mt-4 text-vinho-soft">
-        Confira se o backend está rodando: na raiz do projeto, rode <code className="rounded bg-creme-200 px-1.5 py-0.5">npm run dev</code>.
+      <h1 className="mt-6 font-display text-4xl font-medium tracking-tight text-roxo">não conseguimos falar com a API</h1>
+      <p className="mt-4 text-roxo-soft">
+        Confira se o backend está rodando: na raiz do projeto, rode <code className="rounded bg-nevoa-200 px-1.5 py-0.5">npm run dev</code>.
       </p>
     </section>
   );

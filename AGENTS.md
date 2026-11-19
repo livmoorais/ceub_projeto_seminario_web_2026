@@ -18,8 +18,8 @@ A arquitetura está em `docs/ARQUITETURA.md`.
 
 ## Convenções do frontend
 
-- Siga a identidade visual definida pela Clarice em `frontend/README.md` e `frontend/src/app/globals.css`:
-  use os tokens (`bg-cereja`, `text-vinho`, `border-vinho`...) e os componentes de `src/components/ui`
+- Siga a identidade visual em `frontend/README.md` e `frontend/src/app/globals.css` (cores do CEUB):
+  use os tokens (`bg-violeta`, `text-roxo`, `border-roxo`...) e os componentes de `src/components/ui`
   (`ButtonLink`/`buttonClasses`, `Sticker`, `SectionHeading`, `ConditionBadge`). Textos da interface em minúsculas e em português.
 - Nomes de variáveis, funções e arquivos de lógica em português (`listarPecas`, `reservarPeca`).
 - Todas as URLs vêm de `src/lib/routes.ts`. Nunca escreva caminhos soltos.
@@ -29,6 +29,10 @@ A arquitetura está em `docs/ARQUITETURA.md`.
 - Imagens com `next/image`. Hosts novos precisam entrar em `next.config.ts`.
 - Lógica nova ganha teste em `*.test.ts(x)` ao lado do arquivo.
 - Layout responsivo: teste também em 375 px de largura.
+- **Temas:** nunca use cores fixas (`#hex`, `text-black`); só tokens (`bg-white` vira a cor de superfície de cada tema), que mudam sozinhos nos temas
+  claro, escuro e alto contraste. Cor nova entra nos 3 blocos de `globals.css`, com contraste WCAG AA conferido.
+- **Acessibilidade:** botões só com ícone precisam de `aria-label`; todo elemento interativo precisa de foco visível;
+  painéis fecham com Esc e devolvem o foco. Não remova a barra de acessibilidade.
 
 ## Regras de negócio que não podem quebrar
 

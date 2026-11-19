@@ -6,20 +6,20 @@ export function SectionHeading({
   eyebrow,
   children,
   className = "",
-  tom = "vinho",
+  tom = "roxo",
 }: {
   id?: string;
   eyebrow?: ReactNode;
   children: ReactNode;
   className?: string;
-  tom?: "vinho" | "creme";
+  tom?: "roxo" | "nevoa";
 }) {
   return (
     <div className={className}>
       {eyebrow ? (
         <p
           className={`mb-3 flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase ${
-            tom === "vinho" ? "text-cereja" : "text-chiclete"
+            tom === "roxo" ? "text-violeta" : "text-rosa"
           }`}
         >
           <span aria-hidden="true" className="h-px w-8 bg-current" />
@@ -29,7 +29,7 @@ export function SectionHeading({
       <h2
         id={id}
         className={`font-display text-[2.4rem] leading-[0.95] font-medium tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl ${
-          tom === "vinho" ? "text-vinho" : "text-creme"
+          tom === "roxo" ? "text-roxo" : "text-nevoa"
         }`}
       >
         {children}

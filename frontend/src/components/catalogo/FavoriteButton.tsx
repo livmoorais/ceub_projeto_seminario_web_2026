@@ -18,8 +18,8 @@ export function FavoriteButton({ titulo, className = "" }: { titulo: string; cla
       aria-pressed={favorito}
       aria-label={`Favoritar ${titulo}`}
       onClick={() => setFavorito((v) => !v)}
-      className={`grid size-10 place-items-center rounded-full border-2 border-vinho shadow-[2px_2px_0_0_var(--color-vinho)] transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95 ${
-        favorito ? "bg-chiclete text-cereja" : "bg-creme/90 text-vinho backdrop-blur-sm hover:bg-chiclete-100"
+      className={`grid size-10 place-items-center rounded-full border-2 border-roxo shadow-[2px_2px_0_0_var(--color-roxo)] transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95 ${
+        favorito ? "bg-rosa text-violeta" : "bg-nevoa/90 text-roxo backdrop-blur-sm hover:bg-rosa-100"
       } ${className}`}
     >
       <IconHeart key={String(favorito)} filled={favorito} size={18} className={favorito ? "animate-wiggle" : ""} />

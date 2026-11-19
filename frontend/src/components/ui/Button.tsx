@@ -5,25 +5,25 @@ import type { ComponentProps, ReactNode } from "react";
  * Botão "adesivo": pílula com contorno e sombra sólida deslocada.
  * No hover levanta; no clique afunda (a sombra some).
  */
-export type ButtonVariant = "cereja" | "chiclete" | "chicleteSobreEscuro" | "vinho" | "creme" | "fantasma";
+export type ButtonVariant = "violeta" | "rosa" | "rosaSobreEscuro" | "roxo" | "nevoa" | "fantasma";
 export type ButtonSize = "sm" | "md" | "lg";
 
 const base =
   "group/btn inline-flex items-center justify-center gap-2 rounded-full border-2 font-semibold whitespace-nowrap transition-[transform,box-shadow,background-color] duration-200 ease-out select-none disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<ButtonVariant, string> = {
-  cereja:
-    "border-vinho bg-cereja text-creme shadow-[4px_4px_0_0_var(--color-vinho)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-vinho)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  chiclete:
-    "border-vinho bg-chiclete text-vinho shadow-[4px_4px_0_0_var(--color-vinho)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-vinho)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  // para fundos vinho: contorno e sombra em creme
-  chicleteSobreEscuro:
-    "border-creme bg-chiclete text-vinho shadow-[4px_4px_0_0_var(--color-creme)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-creme)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  vinho:
-    "border-vinho bg-vinho text-creme shadow-[4px_4px_0_0_var(--color-chiclete)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-chiclete)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  creme:
-    "border-vinho bg-creme text-vinho shadow-[4px_4px_0_0_var(--color-vinho)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-chiclete-100 hover:shadow-[6px_6px_0_0_var(--color-vinho)] active:translate-x-1 active:translate-y-1 active:shadow-none",
-  fantasma: "border-transparent bg-transparent text-vinho hover:bg-vinho/5",
+  violeta:
+    "border-roxo bg-violeta text-nevoa shadow-[4px_4px_0_0_var(--color-roxo)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-roxo)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  rosa:
+    "border-roxo bg-rosa text-roxo shadow-[4px_4px_0_0_var(--color-roxo)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-roxo)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  // para fundos roxos: contorno e sombra em névoa
+  rosaSobreEscuro:
+    "border-nevoa bg-rosa text-roxo shadow-[4px_4px_0_0_var(--color-nevoa)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-nevoa)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  roxo:
+    "border-roxo bg-roxo text-nevoa shadow-[4px_4px_0_0_var(--color-rosa)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--color-rosa)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  nevoa:
+    "border-roxo bg-nevoa text-roxo shadow-[4px_4px_0_0_var(--color-roxo)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-rosa-100 hover:shadow-[6px_6px_0_0_var(--color-roxo)] active:translate-x-1 active:translate-y-1 active:shadow-none",
+  fantasma: "border-transparent bg-transparent text-roxo hover:bg-roxo/5",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -32,7 +32,7 @@ const sizes: Record<ButtonSize, string> = {
   lg: "h-14 px-7 text-base sm:text-lg",
 };
 
-export function buttonClasses(variant: ButtonVariant = "cereja", size: ButtonSize = "md", extra = "") {
+export function buttonClasses(variant: ButtonVariant = "violeta", size: ButtonSize = "md", extra = "") {
   return `${base} ${variants[variant]} ${sizes[size]} ${extra}`;
 }
 
@@ -43,7 +43,7 @@ type ButtonLinkProps = ComponentProps<typeof Link> & {
 };
 
 export function ButtonLink({
-  variant = "cereja",
+  variant = "violeta",
   size = "md",
   className = "",
   iconRight,

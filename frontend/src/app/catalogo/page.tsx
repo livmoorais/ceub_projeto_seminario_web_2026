@@ -36,7 +36,7 @@ function lerFiltros(sp: Busca): FiltrosVitrine {
 }
 
 const campo =
-  "h-11 w-full rounded-full border-2 border-vinho bg-white/70 px-4 text-sm text-vinho focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-chiclete)] focus:outline-none";
+  "h-11 w-full rounded-full border-2 border-roxo bg-white/70 px-4 text-sm text-roxo focus:bg-white focus:shadow-[3px_3px_0_0_var(--color-rosa)] focus:outline-none";
 
 export default async function CatalogoPage({ searchParams }: { searchParams: Promise<Busca> }) {
   const filtros = lerFiltros(await searchParams);
@@ -64,7 +64,7 @@ export default async function CatalogoPage({ searchParams }: { searchParams: Pro
         <form
           action={ROUTES.catalogo}
           method="get"
-          className="mt-8 grid gap-3 rounded-[1.5rem] border-2 border-vinho bg-creme p-4 shadow-[4px_4px_0_0_var(--color-vinho)] sm:grid-cols-2 lg:grid-cols-6"
+          className="mt-8 grid gap-3 rounded-[1.5rem] border-2 border-roxo bg-nevoa p-4 shadow-[4px_4px_0_0_var(--color-roxo)] sm:grid-cols-2 lg:grid-cols-6"
         >
           <input type="search" name="busca" defaultValue={filtros.busca} placeholder="buscar peça, marca…" aria-label="Buscar" className={`${campo} lg:col-span-2`} />
           <select name="categoria" defaultValue={filtros.categoria ?? ""} aria-label="Categoria" className={campo}>
@@ -114,13 +114,13 @@ export default async function CatalogoPage({ searchParams }: { searchParams: Pro
                 limpar filtros
               </Link>
             ) : null}
-            <button type="submit" className={buttonClasses("vinho", "sm", "flex-1 sm:flex-none")}>
+            <button type="submit" className={buttonClasses("roxo", "sm", "flex-1 sm:flex-none")}>
               aplicar
             </button>
           </div>
         </form>
 
-        <p className="mt-8 text-sm font-medium text-vinho-soft" aria-live="polite">
+        <p className="mt-8 text-sm font-medium text-roxo-soft" aria-live="polite">
           {visiveis.length} {visiveis.length === 1 ? "peça encontrada" : "peças encontradas"}
         </p>
 
@@ -133,7 +133,7 @@ export default async function CatalogoPage({ searchParams }: { searchParams: Pro
             ))}
           </ul>
         ) : (
-          <p className="mt-6 rounded-3xl border-2 border-dashed border-vinho/40 p-10 text-center font-hand text-2xl">
+          <p className="mt-6 rounded-3xl border-2 border-dashed border-roxo/40 p-10 text-center font-hand text-2xl">
             nada por aqui com esses filtros… tenta outra combinação ♡
           </p>
         )}

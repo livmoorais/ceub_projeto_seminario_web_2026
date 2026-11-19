@@ -1,25 +1,31 @@
 @import "tailwindcss";
 
 /*
- * desaPego · tokens de marca
- * Paleta: creme (fundo), vinho (texto), cereja (ação), chiclete, lilás e pêssego (apoio).
- * Use sempre os tokens (bg-cereja, text-vinho...) em vez de cores soltas.
+ * desaPego · tokens de marca, nas cores do CEUB
+ * Paleta: névoa (fundo), roxo CEUB (texto e contornos), violeta (ação), rosa e magenta CEUB
+ * (destaque), lilás e pervinca (apoio).
+ * Use sempre os tokens (bg-violeta, text-roxo...) em vez de cores soltas.
+ *
+ * Contraste (WCAG 2.1 AA) conferido para cada combinação usada no site, por exemplo:
+ * roxo/névoa 12,9:1 · roxo-soft/névoa 6,8:1 · violeta/névoa 6,9:1 · névoa/violeta 6,9:1 ·
+ * roxo/rosa 6,4:1 · rosa/roxo 6,4:1 · anel de foco magenta/névoa 5,1:1.
  */
 @theme {
-  --color-creme: #fff5ee;
-  --color-creme-200: #fbe7dc;
-  --color-vinho: #5b0f24;
-  --color-vinho-900: #3a0716;
-  --color-vinho-soft: #7e3a4c;
-  --color-cereja: #d7193f;
-  --color-cereja-700: #b0102f;
-  --color-chiclete: #ff5fa2;
-  --color-chiclete-100: #ffd9e8;
-  --color-rosa-queimado: #c97b84;
-  --color-lilas: #cdb6f5;
-  --color-lilas-100: #ece2ff;
-  --color-pessego: #ffc6a5;
-  --color-pessego-100: #ffe7d8;
+  --color-nevoa: #faf6fd;
+  --color-nevoa-200: #efe5f7;
+  --color-roxo: #4a1259; /* roxo institucional do CEUB */
+  --color-roxo-900: #2c0937;
+  --color-roxo-soft: #6c4a7d;
+  --color-violeta: #7a2bb8;
+  --color-violeta-700: #5f1f94;
+  --color-rosa: #f590c8;
+  --color-rosa-100: #fde0ef;
+  --color-magenta: #c4237d; /* magenta das linhas do CEUB, escurecido para contraste */
+  --color-malva: #b38bc2;
+  --color-lilas: #cbb4f2;
+  --color-lilas-100: #eee5fd;
+  --color-pervinca: #b8c4f6;
+  --color-pervinca-100: #e4e9fd;
 
   --animate-marquee: marquee 28s linear infinite;
   --animate-spin-slow: spin 18s linear infinite;
@@ -48,6 +54,67 @@
   }
 }
 
+/*
+ * Temas. O valor fica em <html data-tema="claro | escuro | alto-contraste">, definido antes da
+ * primeira pintura pelo script de src/lib/preferencias.ts. Os componentes usam os mesmos tokens
+ * em todos os temas; só os valores mudam. Contraste conferido (WCAG 2.1 AA) nos 3 temas.
+ */
+[data-tema="escuro"] {
+  color-scheme: dark;
+  --color-nevoa: #1a0b21;
+  --color-nevoa-200: #2a1535;
+  --color-roxo: #f3e9fb;
+  --color-roxo-900: #ffffff;
+  --color-roxo-soft: #cdb8db;
+  --color-violeta: #c8a4f5;
+  --color-violeta-700: #dcc2fa;
+  --color-rosa: #8c2f69;
+  --color-rosa-100: #3b1534;
+  --color-magenta: #ff8fcb;
+  --color-malva: #8a6699;
+  --color-lilas: #5a3d8c;
+  --color-lilas-100: #2c1d47;
+  --color-pervinca: #34468f;
+  --color-pervinca-100: #1c2448;
+  --color-white: #241030;
+}
+
+[data-tema="alto-contraste"] {
+  color-scheme: dark;
+  --color-nevoa: #000000;
+  --color-nevoa-200: #000000;
+  --color-roxo: #ffffff;
+  --color-roxo-900: #ffffff;
+  --color-roxo-soft: #ffffff;
+  --color-violeta: #ffe600;
+  --color-violeta-700: #fff27a;
+  --color-rosa: #000000;
+  --color-rosa-100: #000000;
+  --color-magenta: #00e5ff;
+  --color-malva: #ffffff;
+  --color-lilas: #000000;
+  --color-lilas-100: #000000;
+  --color-pervinca: #000000;
+  --color-pervinca-100: #000000;
+  --color-white: #000000;
+}
+
+/* no alto contraste, links ficam sempre sublinhados */
+[data-tema="alto-contraste"] a:not([class*="rounded-full"]) {
+  text-decoration: underline;
+}
+
+/* o VLibras é aberto pelo botão da nossa barra; o botão flutuante dele fica invisível */
+[vw] [vw-access-button] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* tamanho da fonte escolhido na barra de acessibilidade (tudo usa rem) */
+html {
+  font-size: calc(100% * var(--escala-fonte, 1));
+}
+
 /* fontes carregadas pelo next/font em layout.tsx */
 @theme inline {
   --font-display: var(--font-fraunces), Georgia, serif;
@@ -62,35 +129,41 @@
   }
 
   body {
-    background: var(--color-creme);
-    color: var(--color-vinho);
+    background: var(--color-nevoa);
+    color: var(--color-roxo);
     font-family: var(--font-sans);
   }
 
   ::selection {
-    background: var(--color-chiclete);
-    color: var(--color-vinho);
+    background: var(--color-rosa);
+    color: var(--color-roxo);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-chiclete);
+    outline: 3px solid var(--color-magenta);
     outline-offset: 3px;
+  }
+
+  /* em fundos roxos o anel de foco fica rosa, para manter o contraste */
+  .bg-roxo :focus-visible,
+  .bg-roxo-900 :focus-visible {
+    outline-color: var(--color-rosa);
   }
 }
 
 @layer utilities {
-  /* textura xadrez Y2K usada como fundo em blocos de destaque */
+  /* textura xadrez Y2K (rosa) usada como fundo em blocos de destaque */
   .bg-gingham {
-    background-color: var(--color-chiclete-100);
+    background-color: var(--color-rosa-100);
     background-image:
-      linear-gradient(90deg, rgb(255 95 162 / 0.28) 50%, transparent 50%),
-      linear-gradient(rgb(255 95 162 / 0.28) 50%, transparent 50%);
+      linear-gradient(90deg, color-mix(in srgb, var(--color-rosa) 30%, transparent) 50%, transparent 50%),
+      linear-gradient(color-mix(in srgb, var(--color-rosa) 30%, transparent) 50%, transparent 50%);
     background-size: 28px 28px;
   }
 
   /* pontilhado discreto, estilo papel de scrapbook */
   .bg-dots {
-    background-image: radial-gradient(rgb(91 15 36 / 0.12) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(color-mix(in srgb, var(--color-roxo) 12%, transparent) 1.2px, transparent 1.2px);
     background-size: 18px 18px;
   }
 

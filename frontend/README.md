@@ -38,10 +38,29 @@ npm run build
 
 ## Identidade visual
 
-- **Cores** (tokens Tailwind): `creme` fundo · `vinho` texto · `cereja` ação · `chiclete`, `lilas`, `pessego` apoio.
+- **Cores do CEUB** (tokens Tailwind em `src/app/globals.css`): `nevoa` fundo · `roxo` texto e contornos
+  (roxo institucional `#4a1259`) · `violeta` ação e preço · `rosa` e `magenta` destaque (das linhas da marca CEUB) ·
+  `lilas` e `pervinca` apoio. Use sempre os tokens, nunca cores soltas.
+- **Temas:** claro, escuro e alto contraste usam os mesmos tokens com outros valores (`<html data-tema="...">`).
+  Por padrão o site segue o tema do sistema; a pessoa pode trocar no cabeçalho ou na barra de acessibilidade.
+- **Contraste:** todas as combinações de texto passam no WCAG 2.1 AA nos 3 temas (texto ≥ 4,5:1, contornos e foco ≥ 3:1).
 - **Tipos:** Fraunces (títulos, itálico expressivo) · DM Sans (interface) · Caveat (adesivos e anotações).
-- **Linguagem:** contorno vinho de 2px + sombra sólida deslocada ("adesivo"), recortes em arco, fita adesiva, colagens.
+- **Linguagem:** contorno roxo de 2px + sombra sólida deslocada ("adesivo"), recortes em arco, fita adesiva, colagens.
+  Identidade criada pela Clarice; as cores passaram do vinho/cereja para o roxo e lilás do CEUB.
 - O logotipo é sempre escrito **desaPego**.
+
+## Acessibilidade
+
+- **Barra de acessibilidade** (`src/components/acessibilidade`), no padrão dos sites gov.br: na lateral esquerda
+  (no celular, no canto inferior), com três botões:
+  - **Libras:** abre o [VLibras](https://www.gov.br/governodigital/pt-br/vlibras), tradutor oficial do governo
+    federal. O script só é carregado quando a pessoa clica (precisa de internet).
+  - **Leitor de voz:** lê em voz alta o texto selecionado ou, sem seleção, o conteúdo principal da página
+    (Web Speech API do navegador, voz em português).
+  - **Opções visuais:** tema (claro, escuro, do sistema), alto contraste e tamanho da fonte (90% a 150%).
+- As preferências ficam salvas no navegador e são aplicadas antes da primeira pintura, sem "piscar".
+- Anel de foco visível em todos os temas, menu e painel fecham com Esc e devolvem o foco, e as animações
+  respeitam `prefers-reduced-motion`.
 
 ## Fotos de demonstração
 

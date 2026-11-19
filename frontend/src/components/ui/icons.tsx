@@ -165,3 +165,50 @@ export const IconPinterest = (p: IconProps) => (
     <path d="M10.8 9.2c.4-1 1.4-1.7 2.6-1.6 1.6.1 2.6 1.4 2.4 3-.3 2.1-1.8 3.4-3.3 3.1-.9-.2-1.4-1-1.2-1.9M11.5 11.3 9.2 20.3" />
   </Base>
 );
+
+/* Ícones da barra de acessibilidade e do seletor de tema */
+
+export const IconLibras = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M18 11V6a2 2 0 0 0-4 0" />
+    <path d="M14 10V4a2 2 0 0 0-4 0v2" />
+    <path d="M10 10.5V6a2 2 0 0 0-4 0v8" />
+    <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+  </Base>
+);
+
+export const IconVoz = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20" />
+    <path d="M19.8 17.8a7.5 7.5 0 0 0 .003-10.603" />
+    <path d="M17 15a3.5 3.5 0 0 0-.025-4.975" />
+  </Base>
+);
+
+export const IconOlhoRiscado = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
+    <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+    <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+    <path d="m2 2 20 20" />
+  </Base>
+);
+
+export const IconSol = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+  </Base>
+);
+
+export const IconLua = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </Base>
+);
+
+export const IconParar = (p: IconProps) => (
+  <Base {...p}>
+    <rect x="6" y="6" width="12" height="12" rx="2" />
+  </Base>
+);

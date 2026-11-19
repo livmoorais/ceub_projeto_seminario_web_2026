@@ -52,12 +52,12 @@ export function SiteFooter() {
   const ano = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-vinho text-creme">
+    <footer className="relative overflow-hidden bg-roxo text-nevoa">
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="max-w-sm">
-            <LogoMark tom="creme" className="text-4xl" />
-            <p className="mt-4 text-[0.95rem] leading-relaxed text-creme/80">
+            <LogoMark tom="nevoa" className="text-4xl" />
+            <p className="mt-4 text-[0.95rem] leading-relaxed text-nevoa/80">
               o brechó online comunitário onde qualquer pessoa anuncia as peças paradas no armário, vê quanto vai
               receber e vende com pagamento via Pix. roupa boa merece outra história.
             </p>
@@ -69,7 +69,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`desaPego no ${label} (abre em nova aba)`}
-                    className="grid size-11 place-items-center rounded-full border-2 border-creme/40 transition-all hover:-translate-y-0.5 hover:border-chiclete hover:bg-chiclete hover:text-vinho"
+                    className="grid size-11 place-items-center rounded-full border-2 border-nevoa/40 transition-all hover:-translate-y-0.5 hover:border-rosa hover:bg-rosa hover:text-roxo"
                   >
                     <Icon size={20} />
                   </a>
@@ -81,13 +81,13 @@ export function SiteFooter() {
           <nav aria-label="Rodapé" className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
             {COLUNAS.map((coluna) => (
               <div key={coluna.titulo}>
-                <h2 className="font-hand text-2xl text-chiclete">{coluna.titulo}</h2>
+                <h2 className="font-hand text-2xl text-rosa">{coluna.titulo}</h2>
                 <ul className="mt-3 space-y-2.5">
                   {coluna.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-creme/80 underline-offset-4 transition-colors hover:text-creme hover:underline"
+                        className="text-sm text-nevoa/80 underline-offset-4 transition-colors hover:text-nevoa hover:underline"
                       >
                         {link.label}
                       </Link>
@@ -101,17 +101,17 @@ export function SiteFooter() {
 
         <div
           aria-hidden="true"
-          className="mt-16 flex items-center justify-center gap-4 pb-[0.06em] font-display text-[22vw] leading-none font-semibold tracking-[-0.06em] text-creme/10 select-none lg:text-[17rem]"
+          className="mt-16 flex items-center justify-center gap-4 pb-[0.06em] font-display text-[22vw] leading-none font-semibold tracking-[-0.06em] text-nevoa/10 select-none lg:text-[17rem]"
         >
           <span>
             <span className="italic">desa</span>Pego
           </span>
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 border-t border-creme/20 pt-6 text-xs text-creme/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-3 border-t border-nevoa/20 pt-6 text-xs text-nevoa/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© {ano} desaPego. Todos os direitos reservados.</p>
           <p className="flex items-center gap-1.5">
-            feito com <IconSparkle size={11} className="text-chiclete" /> por estudantes do CEUB · pagamentos via Pix
+            feito com <IconSparkle size={11} className="text-rosa" /> por estudantes do CEUB · pagamentos via Pix
           </p>
         </div>
       </div>
