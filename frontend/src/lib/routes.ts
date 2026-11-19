@@ -10,6 +10,7 @@ export const ROUTES = {
   anunciar: "/anunciar",
   entrar: "/entrar",
   cadastro: "/cadastro",
+  recuperarSenha: "/recuperar-senha",
   conta: "/conta",
   minhasCompras: "/conta/compras",
   meusAnuncios: "/conta/anuncios",

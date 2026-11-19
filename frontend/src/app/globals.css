@@ -99,6 +99,22 @@
   --color-white: #000000;
 }
 
+/*
+ * Painel de marca (ex.: lado esquerdo do login): continua roxo escuro com texto claro também no
+ * modo escuro, onde os tokens se invertem. No alto contraste segue o preto, branco e amarelo.
+ */
+[data-tema="escuro"] .paleta-marca {
+  --color-nevoa: #faf6fd;
+  --color-nevoa-200: #efe5f7;
+  --color-roxo: #3a0e47;
+  --color-roxo-soft: #6c4a7d;
+  --color-violeta: #7a2bb8;
+  --color-rosa: #f590c8;
+  --color-rosa-100: #fde0ef;
+  --color-magenta: #c4237d;
+  --color-lilas: #cbb4f2;
+}
+
 /* no alto contraste, links ficam sempre sublinhados */
 [data-tema="alto-contraste"] a:not([class*="rounded-full"]) {
   text-decoration: underline;

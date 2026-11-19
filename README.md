@@ -78,7 +78,8 @@ Detalhes em [`frontend/README.md`](frontend/README.md#acessibilidade).
 | Backend NestJS + PostgreSQL + Redis | json-server em `backend/` (API REST simulada) |
 | Pagamento pelo Mercado Pago com webhook | Pix simulado, confirmado por um botão de demonstração |
 | Frete pelo Melhor Envio | frete fixo, como no MVP do grupo |
-| Login, perfis e 2FA | ainda não implementados |
+| Login e cadastro (JWT + cookie httpOnly) | telas prontas em `/entrar` e `/cadastro`, chamando `/api/auth/*`; falta o serviço de contas no backend |
+| Perfis e 2FA no admin | ainda não implementados |
 
 ## Autoria
 

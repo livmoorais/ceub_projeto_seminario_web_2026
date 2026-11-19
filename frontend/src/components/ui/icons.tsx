@@ -185,6 +185,20 @@ export const IconVoz = (p: IconProps) => (
   </Base>
 );
 
+export const IconOlho = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+    <circle cx="12" cy="12" r="3" />
+  </Base>
+);
+
+export const IconAlerta = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7.5v5.5M12 16.5h.01" />
+  </Base>
+);
+
 export const IconOlhoRiscado = (p: IconProps) => (
   <Base {...p}>
     <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
