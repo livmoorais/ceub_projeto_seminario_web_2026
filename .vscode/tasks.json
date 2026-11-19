@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Desa Pego: rodar (API + site)",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Desa Pego: restaurar banco de teste",
+      "type": "npm",
+      "script": "reset-db",
+      "problemMatcher": []
+    },
+    {
+      "label": "Desa Pego: lint",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": []
+    }
+  ]
+}

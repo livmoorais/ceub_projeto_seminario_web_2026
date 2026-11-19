@@ -1,0 +1,268 @@
+{
+  "pecas": [
+    {
+      "id": "1",
+      "nome": "Jaqueta jeans oversized anos 90",
+      "marca": "Levi's",
+      "categoria": "jaquetas",
+      "tamanho": "M",
+      "condicao": "otimo",
+      "preco": 149.9,
+      "medidas": {
+        "ombro": 52,
+        "busto": 118,
+        "comprimento": 66
+      },
+      "descricao": "Lavagem clara, botões originais de metal.",
+      "cor": "#7a9cc6",
+      "icone": "🧥",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "nome": "Vestido midi floral de viscose",
+      "marca": "Farm",
+      "categoria": "vestidos",
+      "tamanho": "P",
+      "condicao": "como-novo",
+      "preco": 119.9,
+      "medidas": {
+        "busto": 84,
+        "cintura": 68,
+        "comprimento": 112
+      },
+      "descricao": "Estampa exclusiva, usado duas vezes.",
+      "cor": "#d98b6a",
+      "icone": "👗",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "nome": "Camisa de seda estampada",
+      "marca": "Animale",
+      "categoria": "camisas",
+      "tamanho": "M",
+      "condicao": "bom",
+      "preco": 89.9,
+      "medidas": {
+        "ombro": 40,
+        "busto": 100,
+        "comprimento": 70
+      },
+      "descricao": "Pequeno desgaste na barra, sem manchas.",
+      "cor": "#c9a227",
+      "icone": "👔",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "nome": "Calça pantalona de alfaiataria",
+      "marca": "Zara",
+      "categoria": "calcas",
+      "tamanho": "G",
+      "condicao": "otimo",
+      "preco": 79.9,
+      "medidas": {
+        "cintura": 80,
+        "quadril": 108,
+        "comprimento": 104
+      },
+      "descricao": "Cós alto com pregas, tecido encorpado.",
+      "cor": "#3d4b5c",
+      "icone": "👖",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "nome": "Tênis Adidas Samba",
+      "marca": "Adidas",
+      "categoria": "calcados",
+      "tamanho": "38",
+      "condicao": "bom",
+      "preco": 199.9,
+      "medidas": {
+        "palmilha": 24.5
+      },
+      "descricao": "Solado com uso, cabedal limpo.",
+      "cor": "#2f2f2f",
+      "icone": "👟",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "nome": "Bolsa de couro tiracolo",
+      "marca": "Arezzo",
+      "categoria": "acessorios",
+      "tamanho": "U",
+      "condicao": "como-novo",
+      "preco": 159.9,
+      "medidas": {
+        "largura": 24,
+        "altura": 17,
+        "profundidade": 7
+      },
+      "descricao": "Couro legítimo, alça regulável.",
+      "cor": "#8b4a2b",
+      "icone": "👜",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "nome": "Suéter de tricô tranças",
+      "marca": "Hering",
+      "categoria": "malhas",
+      "tamanho": "G",
+      "condicao": "otimo",
+      "preco": 69.9,
+      "medidas": {
+        "busto": 112,
+        "comprimento": 64
+      },
+      "descricao": "Lã mista, sem bolinhas.",
+      "cor": "#b8a88a",
+      "icone": "🧶",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "nome": "Saia midi plissada metalizada",
+      "marca": "Renner",
+      "categoria": "saias",
+      "tamanho": "P",
+      "condicao": "como-novo",
+      "preco": 59.9,
+      "medidas": {
+        "cintura": 66,
+        "comprimento": 78
+      },
+      "descricao": "Elástico no cós, brilho dourado.",
+      "cor": "#d8c27a",
+      "icone": "🩰",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "nome": "Blazer xadrez príncipe de gales",
+      "marca": "Vintage",
+      "categoria": "jaquetas",
+      "tamanho": "M",
+      "condicao": "bom",
+      "preco": 129.9,
+      "medidas": {
+        "ombro": 42,
+        "busto": 98,
+        "comprimento": 72
+      },
+      "descricao": "Peça dos anos 80, forro íntegro.",
+      "cor": "#6b6b5e",
+      "icone": "🧥",
+      "status": "vendida",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "nome": "Óculos de sol gatinho",
+      "marca": "Chilli Beans",
+      "categoria": "acessorios",
+      "tamanho": "U",
+      "condicao": "otimo",
+      "preco": 49.9,
+      "medidas": {},
+      "descricao": "Lentes sem riscos, acompanha estojo.",
+      "cor": "#a33b3b",
+      "icone": "🕶️",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "nome": "Vestido slip dress cetim",
+      "marca": "Shein",
+      "categoria": "vestidos",
+      "tamanho": "M",
+      "condicao": "como-novo",
+      "preco": 54.9,
+      "medidas": {
+        "busto": 90,
+        "comprimento": 118
+      },
+      "descricao": "Alças finas reguláveis.",
+      "cor": "#5b2a4e",
+      "icone": "👗",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "nome": "Bota coturno de couro",
+      "marca": "Dr. Martens",
+      "categoria": "calcados",
+      "tamanho": "37",
+      "condicao": "bom",
+      "preco": 289.9,
+      "medidas": {
+        "palmilha": 24
+      },
+      "descricao": "Couro marcado pelo uso, solado ótimo.",
+      "cor": "#1f1a17",
+      "icone": "🥾",
+      "status": "disponivel",
+      "reservadaAte": null,
+      "criadoEm": "2026-11-01T12:00:00.000Z"
+    }
+  ],
+  "categorias": [
+    {
+      "id": "jaquetas",
+      "nome": "Jaquetas e blazers"
+    },
+    {
+      "id": "vestidos",
+      "nome": "Vestidos"
+    },
+    {
+      "id": "camisas",
+      "nome": "Camisas"
+    },
+    {
+      "id": "calcas",
+      "nome": "Calças"
+    },
+    {
+      "id": "saias",
+      "nome": "Saias"
+    },
+    {
+      "id": "malhas",
+      "nome": "Malhas"
+    },
+    {
+      "id": "calcados",
+      "nome": "Calçados"
+    },
+    {
+      "id": "acessorios",
+      "nome": "Acessórios"
+    }
+  ],
+  "pedidos": []
+}
