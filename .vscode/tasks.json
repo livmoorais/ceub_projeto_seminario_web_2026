@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Desa Pego: rodar (API + site)",
+      "label": "desaPego: rodar backend + frontend",
       "type": "npm",
       "script": "dev",
       "isBackground": true,
@@ -10,15 +10,16 @@
       "group": { "kind": "build", "isDefault": true }
     },
     {
-      "label": "Desa Pego: restaurar banco de teste",
+      "label": "desaPego: testes",
       "type": "npm",
-      "script": "reset-db",
-      "problemMatcher": []
+      "script": "test",
+      "problemMatcher": [],
+      "group": "test"
     },
     {
-      "label": "Desa Pego: lint",
+      "label": "desaPego: restaurar banco de teste",
       "type": "npm",
-      "script": "lint",
+      "script": "reset-db",
       "problemMatcher": []
     }
   ]

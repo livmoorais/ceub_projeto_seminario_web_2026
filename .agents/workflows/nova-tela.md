@@ -1,19 +1,19 @@
 ---
-description: Criar uma nova tela (página) no Desa Pego seguindo o padrão do projeto
+description: Criar uma nova tela no frontend do desaPego seguindo o padrão do projeto
 ---
 
-1. Leia `AGENTS.md` e `src/App.jsx` para entender as rotas existentes.
-2. Se a tela precisar de dados novos da API, adicione a função em `src/api/` (no arquivo do módulo certo)
-   e, se for preciso, o novo recurso em `db.seed.json`.
-3. Crie a página em `src/pages/` (ou `src/pages/admin/` se for do painel), usando `useEffect` + `useState`
-   e os componentes `Carregando` / `ErroApi`.
-4. Registre a rota em `src/App.jsx`, dentro do layout certo (`LojaLayout` ou `AdminLayout`).
-5. Se a tela tiver link no menu, adicione-o em `src/layouts/`.
+1. Leia `AGENTS.md`, `frontend/README.md` (identidade visual) e `frontend/src/lib/routes.ts`.
+2. Registre a URL nova em `frontend/src/lib/routes.ts`.
+3. Se a tela precisar de dados novos, crie a função em `frontend/src/lib/api/` e, se for preciso,
+   o recurso em `backend/db.seed.json` (depois rode `npm run reset-db` com o servidor parado).
+4. Crie a página em `frontend/src/app/<rota>/page.tsx`. Prefira componente de servidor; use `"use client"`
+   só quando precisar de estado ou eventos. Reaproveite `ButtonLink`, `Sticker`, `SectionHeading` e `ProductCard`.
+5. Escreva os testes da lógica nova em `*.test.ts(x)`.
 6. Verifique:
 
 // turbo
 ```bash
-npm run lint && npm run build
+npm test && npm run lint && npm run typecheck && npm run build
 ```
 
 7. Rode `npm run dev` e teste a tela no navegador, inclusive em largura de celular (375 px).
