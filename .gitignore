@@ -24,6 +24,12 @@ yarn-error.log*
 # banco da API simulada (gerado a partir de db.seed.json)
 backend/db.json
 
+# banco do serviço de contas: tem hashes de senha e sessões, nunca vai para o Git
+backend/contas/dados/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
 # variáveis de ambiente (nunca subir)
 .env
 .env.*

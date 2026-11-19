@@ -6,7 +6,8 @@ A arquitetura está em `docs/ARQUITETURA.md`.
 ## Estrutura
 
 - `frontend/`: Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS v4 + Zustand. Testes com Vitest.
-- `backend/`: API REST simulada com json-server (`db.seed.json` é o catálogo original; `db.json` é gerado e fica fora do Git).
+- `backend/`: catálogo simulado com json-server (`db.seed.json` é o original; `db.json` é gerado e fica fora do Git)
+  e o serviço de contas em `backend/contas` (Express + TypeScript + SQLite nativo do Node, porta 3002).
 - A raiz usa npm workspaces: rode os comandos a partir dela.
 
 ## Comandos (na raiz)
@@ -14,7 +15,16 @@ A arquitetura está em `docs/ARQUITETURA.md`.
 - `npm install`: instala tudo.
 - `npm run dev`: backend em http://localhost:3001 e frontend em http://localhost:3000.
 - `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`: precisam passar antes de qualquer commit.
-- `npm run reset-db`: restaura o catálogo (com o servidor parado).
+- `npm run reset-db`: restaura o catálogo; `npm run reset-contas`: apaga as contas (com o servidor parado).
+
+## Contas e segurança
+
+- Senhas só com Argon2id (`backend/contas/src/senhas.ts`); nunca devolva senha ou hash numa resposta.
+- O token de acesso fica só na memória (`frontend/src/lib/sessao.ts`), nunca em `localStorage`; a sessão volta
+  pelo cookie httpOnly com `renovarSessao()`.
+- Mensagens de erro de login são genéricas (não revelam se o e-mail existe).
+- Toda regra de validação existe no backend (Zod); a do frontend é só para retorno rápido.
+- O banco `backend/contas/dados/` nunca vai para o Git.
 
 ## Convenções do frontend
 

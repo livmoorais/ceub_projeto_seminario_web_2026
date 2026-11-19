@@ -27,6 +27,7 @@ npm run build
 | `src/app/carrinho` | sacola com a contagem regressiva da reserva de 15 min (Req. 010) |
 | `src/app/checkout` e `src/app/pedido/[id]` | endereço pelo ViaCEP, frete fixo e Pix simulado (Req. 011) |
 | `src/app/entrar` e `src/app/cadastro` | login e cadastro na mesma tela, alternando sem recarregar (Req. 001) |
+| `src/app/conta` | área da conta: recupera a sessão pelo cookie e permite sair |
 | `src/components/conta` | `PaginaConta` (layout em duas áreas, abas, envio) e `CampoConta` (rótulo, dica, erro e mostrar senha) |
 | `src/components/sacola` | botão de reservar, contador e selo de quantidade no cabeçalho |
 | `src/lib/api` | acesso à API REST do backend (`catalogo.ts`, `pedidos.ts`) |
@@ -70,8 +71,9 @@ npm run build
   caracteres com letra e número, e confirmação igual. O backend deve validar de novo.
 - As chamadas vão para `/api/auth/login` e `/api/auth/cadastro`, na mesma origem (proxy em `next.config.ts`),
   para o refresh token ficar num cookie httpOnly first-party.
-- **Não há login simulado:** enquanto o serviço de contas do backend (Módulo 01) não existir, a API responde 404
-  e a tela avisa que o login ainda não está disponível. Nada é gravado no `db.json`.
+- O login é real, feito pelo [serviço de contas](../backend/README.md#serviço-de-contas-contas). A sessão fica só na
+  memória (`src/lib/sessao.ts`) e volta pelo cookie httpOnly ao recarregar. Se o serviço não responder, a tela avisa
+  e não finge que entrou.
 - Mensagem genérica para credenciais inválidas (não revela se o e-mail existe).
 
 ## Fotos de demonstração

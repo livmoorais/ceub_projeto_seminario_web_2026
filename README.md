@@ -11,15 +11,15 @@ Desenvolvimento Web:
 | --- | --- |
 | [`docs/`](docs/ARQUITETURA.md) | **Documento de Arquitetura de Sistema Web** (atividade da disciplina) |
 | [`frontend/`](frontend/README.md) | site em **Next.js (React) + TypeScript + Tailwind**: Home da Clarice, vitrine, página da peça, sacola com reserva de 15 minutos, checkout e Pix simulado |
-| [`backend/`](backend/README.md) | **API REST simulada** com json-server, no lugar do backend NestJS enquanto ele não existe |
+| [`backend/`](backend/README.md) | **catálogo** simulado com json-server e **serviço de contas** de verdade (cadastro, login e sessão com Argon2id, JWT e cookie httpOnly) |
 
 ## Como rodar
 
-Pré-requisito: **Node.js 20 ou mais novo** (`node -v` para conferir).
+Pré-requisito: **Node.js 22.13 ou mais novo** (`node -v` para conferir).
 
 ```bash
 npm install      # instala as dependências do frontend e do backend
-npm run dev      # sobe o backend (porta 3001) e o frontend (porta 3000) juntos
+npm run dev      # sobe o catálogo (3001), o serviço de contas (3002) e o site (3000)
 ```
 
 Abra **http://localhost:3000**.
@@ -28,10 +28,11 @@ Abra **http://localhost:3000**.
 | --- | --- |
 | `npm run dev` | sobe backend e frontend juntos |
 | `npm run dev:frontend` / `npm run dev:backend` | sobe só um dos dois |
-| `npm test` | testes do frontend (Vitest + Testing Library) |
-| `npm run lint` / `npm run typecheck` | ESLint e checagem de tipos |
+| `npm test` | testes do frontend e do backend (Vitest) |
+| `npm run lint` / `npm run typecheck` | ESLint e checagem de tipos (frontend e backend) |
 | `npm run build` | build de produção do frontend |
 | `npm run reset-db` | volta o catálogo ao estado inicial (com o `npm run dev` parado) |
+| `npm run reset-contas` | apaga todas as contas de teste (com o `npm run dev` parado) |
 
 ## Como testar uma compra
 
@@ -75,10 +76,10 @@ Detalhes em [`frontend/README.md`](frontend/README.md#acessibilidade).
 | Vitest + Testing Library | ✔ `npm test` |
 | ADR-003: reserva de peça única com expiração de 15 min | ✔ reserva ao colocar na sacola; reserva vencida volta para a vitrine |
 | Estoque e preço nunca vêm do cache no checkout | ✔ o checkout relê cada peça na API antes de criar o pedido |
-| Backend NestJS + PostgreSQL + Redis | json-server em `backend/` (API REST simulada) |
+| Backend NestJS + PostgreSQL + Redis | catálogo com json-server; contas com Express + SQLite, mesmo contrato REST previsto |
 | Pagamento pelo Mercado Pago com webhook | Pix simulado, confirmado por um botão de demonstração |
 | Frete pelo Melhor Envio | frete fixo, como no MVP do grupo |
-| Login e cadastro (JWT + cookie httpOnly) | telas prontas em `/entrar` e `/cadastro`, chamando `/api/auth/*`; falta o serviço de contas no backend |
+| Login e cadastro (Argon2id, JWT + cookie httpOnly) | ✔ telas `/entrar`, `/cadastro` e `/conta`; serviço de contas em `backend/contas` (Express + SQLite no lugar de NestJS + PostgreSQL) |
 | Perfis e 2FA no admin | ainda não implementados |
 
 ## Autoria

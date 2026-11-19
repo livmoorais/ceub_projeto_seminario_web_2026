@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Tape } from "@/components/ui/Sticker";
 import { buttonClasses } from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import { IconAlerta } from "@/components/ui/icons";
 import { IMAGENS_HOME } from "@/data/demo/imagens";
 import { cadastrar, ContaErro, entrar } from "@/lib/api/contas";
 import { ROUTES } from "@/lib/routes";
+import { useSessao } from "@/lib/sessao";
 import {
   CAMPOS,
   SENHA_MINIMO,
@@ -43,6 +45,8 @@ const VAZIO: DadosConta = { nome: "", email: "", senha: "", confirmarSenha: "" }
 
 /** Login e cadastro na mesma tela (Req. 001), alternando sem recarregar a página. */
 export function PaginaConta({ modoInicial }: { modoInicial: ModoConta }) {
+  const router = useRouter();
+  const definirSessao = useSessao((s) => s.definir);
   const [modo, setModo] = useState<ModoConta>(modoInicial);
   const [dados, setDados] = useState<DadosConta>(VAZIO);
   const [erros, setErros] = useState<ErrosConta>({});
@@ -98,10 +102,12 @@ export function PaginaConta({ modoInicial }: { modoInicial: ModoConta }) {
 
     setEnviando(true);
     try {
-      if (modo === "entrar") await entrar(dados.email.trim(), dados.senha);
-      else await cadastrar(dados.nome.trim(), dados.email.trim(), dados.senha);
-      // só chega aqui com o backend de contas respondendo de verdade
-      window.location.assign(ROUTES.conta);
+      const sessao =
+        modo === "entrar"
+          ? await entrar(dados.email.trim(), dados.senha)
+          : await cadastrar(dados.nome.trim(), dados.email.trim(), dados.senha);
+      definirSessao(sessao);
+      router.push(ROUTES.conta);
     } catch (falha) {
       setErroGeral(falha instanceof ContaErro ? falha.message : "algo deu errado. tente de novo.");
       setEnviando(false);

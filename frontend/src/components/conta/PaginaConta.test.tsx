@@ -1,9 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { useSessao } from "@/lib/sessao";
 import { PaginaConta } from "./PaginaConta";
 
-afterEach(() => vi.unstubAllGlobals());
+const push = vi.fn();
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push, replace: vi.fn() }) }));
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  push.mockClear();
+  useSessao.setState({ sessao: null });
+});
 
 describe("PaginaConta", () => {
   it("alterna entre entrar e criar conta sem recarregar, mantendo o e-mail", async () => {
@@ -59,21 +67,48 @@ describe("PaginaConta", () => {
     expect(screen.getByRole("button", { name: "ocultar senha" })).toHaveAttribute("aria-pressed", "true");
   });
 
-  it("não simula login: sem o backend de contas, avisa que ainda não está disponível", async () => {
+  it("entra de verdade: guarda a sessão e vai para a conta", async () => {
     const user = userEvent.setup();
-    const fetchFalso = vi.fn().mockResolvedValue(new Response("Not Found", { status: 404 }));
+    const sessao = { usuario: { id: "1", nome: "Ana Souza", email: "ana@exemplo.com" }, accessToken: "ey.x.y", expiraEm: "" };
+    const fetchFalso = vi.fn().mockResolvedValue(new Response(JSON.stringify(sessao), { status: 200 }));
     vi.stubGlobal("fetch", fetchFalso);
-    const assign = vi.fn();
-    vi.stubGlobal("location", { ...window.location, assign });
     render(<PaginaConta modoInicial="entrar" />);
 
     await user.type(screen.getByLabelText("e-mail"), "ana@exemplo.com");
     await user.type(screen.getByLabelText("senha"), "garimpo123");
     await user.click(screen.getByRole("button", { name: "entrar" }));
 
-    expect(await screen.findByRole("alert")).toHaveTextContent(/ainda não estão disponíveis/);
-    expect(fetchFalso).toHaveBeenCalledWith(expect.stringMatching(/\/auth\/login$/), expect.objectContaining({ method: "POST" }));
-    expect(assign).not.toHaveBeenCalled();
+    await vi.waitFor(() => expect(push).toHaveBeenCalledWith("/conta"));
+    expect(fetchFalso).toHaveBeenCalledWith("/api/auth/login", expect.objectContaining({ method: "POST", credentials: "same-origin" }));
+    expect(useSessao.getState().sessao?.usuario.nome).toBe("Ana Souza");
+  });
+
+  it("se o serviço de contas não responder, avisa sem fingir que entrou", async () => {
+    const user = userEvent.setup();
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response("Not Found", { status: 404 })));
+    render(<PaginaConta modoInicial="entrar" />);
+
+    await user.type(screen.getByLabelText("e-mail"), "ana@exemplo.com");
+    await user.type(screen.getByLabelText("senha"), "garimpo123");
+    await user.click(screen.getByRole("button", { name: "entrar" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(/serviço de contas não respondeu/);
+    expect(push).not.toHaveBeenCalled();
+    expect(useSessao.getState().sessao).toBeNull();
+  });
+
+  it("mostra a mensagem do backend para e-mail já cadastrado", async () => {
+    const user = userEvent.setup();
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ erro: "já existe" }), { status: 409 })));
+    render(<PaginaConta modoInicial="cadastro" />);
+
+    await user.type(screen.getByLabelText("nome completo"), "Ana Souza");
+    await user.type(screen.getByLabelText("e-mail"), "ana@exemplo.com");
+    await user.type(screen.getByLabelText("senha"), "garimpo123");
+    await user.type(screen.getByLabelText("confirmar senha"), "garimpo123");
+    await user.click(screen.getByRole("button", { name: "criar minha conta" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("já existe uma conta com esse e-mail. tente entrar.");
   });
 
   it("mensagem genérica para credenciais inválidas", async () => {
